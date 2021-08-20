@@ -49,4 +49,21 @@ public class GameTest {
         Assert.assertEquals("Hearts Q", new Card(Suit.Hearts, 12).toString());
         Assert.assertEquals("Hearts K", new Card(Suit.Hearts, 13).toString());
     }
+
+    @Test
+    public void given10PointsWhenDealtAceThenItShouldCountAs11() {
+        Game game = new Game();
+        game.deal(new Card(Suit.Hearts, 10));
+        game.deal(new Card(Suit.Hearts, 1));
+        Assert.assertEquals(21, game.getTotalPoints());
+    }
+
+    @Test
+    public void given11PointsWhenDealtAceThenItShouldCountAs1() {
+        Game game = new Game();
+        game.deal(new Card(Suit.Hearts, 7));
+        game.deal(new Card(Suit.Hearts, 4));
+        game.deal(new Card(Suit.Hearts, 1));
+        Assert.assertEquals(12, game.getTotalPoints());
+    }
 }

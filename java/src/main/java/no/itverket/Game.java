@@ -5,7 +5,8 @@ public class Game {
 
     public void deal(Card card) {
         if (!isGameOver()) {
-            totalPoints += Math.min(card.rank, 10);
+            int points = Math.min(card.rank, 10);
+            totalPoints += getPointsFromAce(points);
             System.out.printf("Hit with %s. Total is %s%n", card, totalPoints);
         }
     }
@@ -16,5 +17,9 @@ public class Game {
 
     public int getTotalPoints() {
         return totalPoints;
+    }
+
+    private int getPointsFromAce(int rank) {
+        return rank == 1 ? (totalPoints < 11 ? 11 : 1) : rank;
     }
 }
