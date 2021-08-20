@@ -16,4 +16,8 @@ class Deck {
         }
         Collections.shuffle(cards);
     }
+
+    Card takeCard() {
+        return cards.remove(cards.size() - 1);
+    }
 }

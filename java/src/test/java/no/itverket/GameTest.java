@@ -25,20 +25,20 @@ public class GameTest {
 
     @Test
     public void gameOverWhenPlayerExceeds21Points() {
-        Game game = new Game();
-        game.deal(new Card(Suit.Hearts, 10));
-        game.deal(new Card(Suit.Hearts, 10));
-        game.deal(new Card(Suit.Hearts, 2));
-        Assert.assertTrue(game.isGameOver());
+        Player game = new Player();
+        game.hit(new Card(Suit.Hearts, 10));
+        game.hit(new Card(Suit.Hearts, 10));
+        game.hit(new Card(Suit.Hearts, 2));
+        Assert.assertTrue(game.hasLost());
     }
 
     @Test
     public void shouldNotDealCardsWhenGameIsOver() {
-        Game game = new Game();
-        game.deal(new Card(Suit.Hearts, 10));
-        game.deal(new Card(Suit.Hearts, 10));
-        game.deal(new Card(Suit.Hearts, 2));
-        game.deal(new Card(Suit.Hearts, 5));
+        Player game = new Player();
+        game.hit(new Card(Suit.Hearts, 10));
+        game.hit(new Card(Suit.Hearts, 10));
+        game.hit(new Card(Suit.Hearts, 2));
+        game.hit(new Card(Suit.Hearts, 5));
         Assert.assertEquals(22, game.getTotalPoints());
     }
 
@@ -52,18 +52,18 @@ public class GameTest {
 
     @Test
     public void given10PointsWhenDealtAceThenItShouldCountAs11() {
-        Game game = new Game();
-        game.deal(new Card(Suit.Hearts, 10));
-        game.deal(new Card(Suit.Hearts, 1));
-        Assert.assertEquals(21, game.getTotalPoints());
+        Player player = new Player();
+        player.hit(new Card(Suit.Hearts, 10));
+        player.hit(new Card(Suit.Hearts, 1));
+        Assert.assertEquals(21, player.getTotalPoints());
     }
 
     @Test
     public void given11PointsWhenDealtAceThenItShouldCountAs1() {
-        Game game = new Game();
-        game.deal(new Card(Suit.Hearts, 7));
-        game.deal(new Card(Suit.Hearts, 4));
-        game.deal(new Card(Suit.Hearts, 1));
-        Assert.assertEquals(12, game.getTotalPoints());
+        Player player = new Player();
+        player.hit(new Card(Suit.Hearts, 7));
+        player.hit(new Card(Suit.Hearts, 4));
+        player.hit(new Card(Suit.Hearts, 1));
+        Assert.assertEquals(12, player.getTotalPoints());
     }
 }

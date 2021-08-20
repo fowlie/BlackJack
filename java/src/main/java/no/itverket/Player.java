@@ -1,17 +1,17 @@
 package no.itverket;
 
-public class Game {
+public class Player {
     private int totalPoints;
 
-    public void deal(Card card) {
-        if (!isGameOver()) {
+    public void hit(Card card) {
+        if (!hasLost()) {
             int points = Math.min(card.rank, 10);
             totalPoints += getPointsFromAce(points);
-            System.out.printf("Hit with %s. Total is %s%n", card, totalPoints);
+            System.out.printf("%s hit with %s. Total is %s%n", this.getClass().getSimpleName(), card, totalPoints);
         }
     }
 
-    public boolean isGameOver() {
+    public boolean hasLost() {
         return totalPoints > 21;
     }
 
