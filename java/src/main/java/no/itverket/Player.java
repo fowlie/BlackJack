@@ -22,4 +22,6 @@ public class Player {
     private int getPointsFromAce(int rank) {
         return rank == 1 ? (totalPoints < 11 ? 11 : 1) : rank;
     }
+
+    public static class Dealer extends Player {}
 }
