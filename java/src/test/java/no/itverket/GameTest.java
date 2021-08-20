@@ -4,7 +4,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-public class ProgramTest {
+public class GameTest {
 
     private Deck deck;
 
@@ -40,5 +40,13 @@ public class ProgramTest {
         game.deal(new Card(Suit.Hearts, 2));
         game.deal(new Card(Suit.Hearts, 5));
         Assert.assertEquals(22, game.getTotalPoints());
+    }
+
+    @Test
+    public void pictureCardsShouldPrintRankWithLetterNotNumber() {
+        Assert.assertEquals("Hearts A", new Card(Suit.Hearts, 1).toString());
+        Assert.assertEquals("Hearts J", new Card(Suit.Hearts, 11).toString());
+        Assert.assertEquals("Hearts Q", new Card(Suit.Hearts, 12).toString());
+        Assert.assertEquals("Hearts K", new Card(Suit.Hearts, 13).toString());
     }
 }

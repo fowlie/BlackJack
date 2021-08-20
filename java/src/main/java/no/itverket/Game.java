@@ -6,7 +6,7 @@ public class Game {
     public void deal(Card card) {
         if (!isGameOver()) {
             totalPoints += Math.min(card.rank, 10);
-            System.out.printf("Hit with %s %s. Total is %s%n", card.suit, card.rank, totalPoints);
+            System.out.printf("Hit with %s. Total is %s%n", card, totalPoints);
         }
     }
 
